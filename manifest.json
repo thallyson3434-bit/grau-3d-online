@@ -2,7 +2,7 @@
   "name": "Grau 3D Online",
   "short_name": "Grau3D",
   "description": "Jogo de grau 3D online para celular, com motos e multiplayer",
-  "start_url": "."
+  "start_url": "/grau-3d-online/"
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
