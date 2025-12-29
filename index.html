@@ -51,18 +51,20 @@
     0.1,
     1000
   );
-  camera.position.z = 6;
-  camera.position.y = 2;
-
-  // RENDER
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+camera.position.set(0, 2, 6);
+camera.lookAt(0, 0.5, 0);  camera.lookAt(0, 0.5, 0);  cac
+  const renderer = new THREE.WebGLRen
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
   // LUZ
   const light = new THREE.DirectionalLight(0xffffff, 1);
   light.position.set(5, 10, 5);
-  scene.add(light);
+  scene.add(light);const light = new THREE.DirectionalLight(0xffffff, 1.2);
+light.position.set(5, 10, 5);
+scene.add(light);
+
+scene.add(new THREE.AmbientLight(0x404040));
 
   // CHÃO
   const ground = new THREE.Mesh(
@@ -72,91 +74,31 @@
   ground.rotation.x = -Math.PI / 2;
   scene.add(ground);
 
-  // 🏍️ MOTO (MODELO SIMPLES)
-  const moto = new THREE.Group();
+  // 🏍️ MOTO (MODELO SIMPLES 
+const moto = new THREE.Group();
 
-  const loader = new THREE.TextureLoader();
-const motoTexture = loader.load("textures/moto.png");
-
+// Corpo
 const corpo = new THREE.Mesh(
   new THREE.BoxGeometry(2, 0.5, 1),
-  new THREE.MeshStandardMaterial({ map: motoTexture })
+  new THREE.MeshStandardMaterial({ color: 0xff0000 })
 );
-  moto.add(corpo);
+corpo.position.y = 0.6;
+moto.add(corpo);
 
-  const rodaGeo = new THREE.CylinderGeometry(0.4, 0.4, 0.3, 32);
-  const rodaMat = new THREE.MeshStandardMaterial({ color: 0x000000 });
+// Roda traseira
+const roda1 = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.35, 0.35, 0.3, 16),
+  new THREE.MeshStandardMaterial({ color: 0x000000 })
+);
+roda1.rotation.z = Math.PI / 2;
+roda1.position.set(-0.8, 0.35, 0);
+moto.add(roda1);
 
-  const roda1 = new THREE.Mesh(rodaGeo, rodaMat);
-  roda1.rotation.z = Math.PI / 2;
-  roda1.position.set(-0.8, -0.4, 0);
-  moto.add(roda1);
+// Roda dianteira
+const roda2 = roda1.clone();
+roda2.position.set(0.8, 0.35, 0);
+moto.add(roda2);
 
-  const roda2 = roda1.clone();
-  roda2.position.x = 0.8;
-  moto.add(roda2);
 
-  moto.position.y = 0.5;
-  scene.add(moto);
-
-  // CONTROLES
-  let angulo = 0;
-
-  function acelerar() {
-    moto.position.z -= 0.2;
-  }
-
-  function darGrau() {
-    angulo -= 0.1;
-    moto.rotation.x = angulo;
-  }
-
-  // ANIMAÇÃO
-  function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-  }
-
-  animate();
-
-  // AJUSTE PARA CELULAR
-  window.addEventListener("resize", () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-</script>
-let velocidade = 0;
-let rotacaoGrau = 0;
-let empinando = false;
-</body>
-</html>
-function acelerar() {
-  velocidade += 0.02;
-}
-
-function darGrau() {
-  empinando = true;
-  setTimeout(() => empinando = false, 300);
-}
-function animate() {
-  requestAnimationFrame(animate);
-
-  // Movimento pra frente
-  moto.position.z -= velocidade;
-
-  // Grau
-  if (empinando) {
-    rotacaoGrau += 0.02;
-  } else {
-    rotacaoGrau -= 0.015;
-  }
-
-  // Limites
-  rotacaoGrau = Math.max(0, Math.min(rotacaoGrau, Math.PI / 4));
-  moto.rotation.x = -rotacaoGrau;
-
-  renderer.render(scene, camera);
-}
-
-animate();
+scene.add(moto)
+ccoconconsconstMeREEE.CylinderGeometry(0.4, 0.4, 0.3, 32);;  w THREE.CylinderGeometry(0  = new THREE.CylindREGeoyltryer.4,metr, 0.3, 02);;  w THREE.CylindREGeoyltryer.4ome.4,(0.3, 02   new THREE.CylindREGeoyltryer.4,metr, 0.3, 0.);;0.3,, 0.3.  24;;  w THREE.C.l nHREE.omerodE.Ce merodG o ero.o   = new Td  G ., new THREyliylinderG .,0tr tco4s   0 .,0.8da1)// ANIMA   // CONTROL0  // ANIMA   // CCONTfunctio;  rele ;  sition.x = 0.o.. -= 0..    mot  CONTROnctio  ANI.. -=// Cunctfo  darGrau((  o  Amott positiooctfo  0.rttarooatiAAA//requesotiaddEventListeneioatire reeer  n   e renddrerPwetSoze(wirn d thnewW  oh rwiddoeigwerWg thnewW  oh rwiddoeedweupdateProjecehigamner hnewW  oh rwiddoe(gwerWwwthnewW   h ewW  oh rwiddoe(gwerWw  igamWer  n   e renddrerPwetSeze(wi n w thnewW  oh r iddoeewwerWwethnewW  oh rWiddhnewW  oh rwiddoeidwetProjectxr   igamWer  n   e renddrerPwetSoze(wi n w thnewW  oh rwiddoe(wwerWwethnewW  oh rwiddoeirwetdoe(.werWw thnewW  oh
