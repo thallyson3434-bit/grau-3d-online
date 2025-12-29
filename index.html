@@ -66,3 +66,27 @@
 
 </body>
 </html>
+<div id="game">
+  <p>🚀 Grau 3D rodando no celular!</p>
+
+  <img src="img/moto.png" 
+       alt="Moto"
+       style="width:250px; transform: rotate(0deg);" 
+       id="moto">
+
+  <button onclick="acelerar()">Acelerar</button>
+  <button onclick="darGrau()">Dar Grau 😎</button>
+</div>
+<script>
+  const moto = document.getElementById("moto");
+  let angulo = 0;
+
+  function acelerar() {
+    alert("Acelerando 🚀");
+  }
+
+  function darGrau() {
+    angulo -= 15;
+    moto.style.transform = `rotate(${angulo}deg)`;
+  }
+</script>
