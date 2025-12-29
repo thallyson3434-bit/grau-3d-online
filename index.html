@@ -126,6 +126,37 @@ const corpo = new THREE.Mesh(
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 </script>
-
+let velocidade = 0;
+let rotacaoGrau = 0;
+let empinando = false;
 </body>
 </html>
+function acelerar() {
+  velocidade += 0.02;
+}
+
+function darGrau() {
+  empinando = true;
+  setTimeout(() => empinando = false, 300);
+}
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Movimento pra frente
+  moto.position.z -= velocidade;
+
+  // Grau
+  if (empinando) {
+    rotacaoGrau += 0.02;
+  } else {
+    rotacaoGrau -= 0.015;
+  }
+
+  // Limites
+  rotacaoGrau = Math.max(0, Math.min(rotacaoGrau, Math.PI / 4));
+  moto.rotation.x = -rotacaoGrau;
+
+  renderer.render(scene, camera);
+}
+
+animate();
