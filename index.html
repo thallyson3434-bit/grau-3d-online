@@ -1,58 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Grau 3D Online</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grau 3D Online</title>
 
-<style>
-body {
-  margin: 0;
-  overflow: hidden;
-  background: #000;
-  color: #fff;
-}
-</style>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158/build/three.min.js"></script>
 
-<link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial;
+    }
+    #loading {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 40vh;
+    }
+    #game {
+      display: none;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+    button {
+      padding: 12px;
+      font-size: 18px;
+      width: 200px;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1 style="text-align:center">Carregando jogo...</h1>
-  
-<script src="https://cdn.jsdelivr.net/npm/three@0.158/build/three.min.js"></script>
-<script>
-alert("GAME JS CARREGOU");
-</script>
+  <div id="loading">Carregando jogo...</div>
+
+  <div id="game">
+    <p>🚀 Grau 3D rodando no celular!</p>
+    <button onclick="acelerar()">Acelerar</button>
+    <button onclick="darGrau()">Dar Grau 😎</button>
+  </div>
+
+  <script>
+    alert("GAME JS CARREGOU");
+
+    // simula carregamento
+    setTimeout(() => {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("game").style.display = "flex";
+    }, 1000);
+
+    function acelerar() {
+      alert("Acelerando 🚀");
+    }
+
+    function darGrau() {
+      alert("Empinou 😎");
+    }
+  </script>
 
 </body>
-  <div id="loading" style="text-align:center;font-size:24px;">
-    Carregando jogo...
-  </div>
-
-  <script document.getElementById("loading").style.display = "none";
-
-document.body.innerHTML += `
-  <div style="
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    height:100vh;
-    background:black;
-    color:white;
-    font-size:22px;
-    flex-direction:column;
-  ">
-    <p>🏍️ Grau 3D rodando no celular!</p>
-
-    <button onclick="alert('Acelerando 🚀')" style="padding:12px;font-size:18px;margin:10px;">
-      Acelerar
-    </button>
-
-    <button onclick="alert('Empinou 😎')" style="padding:12px;font-size:18px;">
-      Dar Grau
-    </button>
-  </div>
-`;
-  </body>
-</htmlm
+</html>
