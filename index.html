@@ -75,10 +75,13 @@
   // 🏍️ MOTO (MODELO SIMPLES)
   const moto = new THREE.Group();
 
-  const corpo = new THREE.Mesh(
-    new THREE.BoxGeometry(2, 0.5, 1),
-    new THREE.MeshStandardMaterial({ color: 0xff0000 })
-  );
+  const loader = new THREE.TextureLoader();
+const motoTexture = loader.load("textures/moto.png");
+
+const corpo = new THREE.Mesh(
+  new THREE.BoxGeometry(2, 0.5, 1),
+  new THREE.MeshStandardMaterial({ map: motoTexture })
+);
   moto.add(corpo);
 
   const rodaGeo = new THREE.CylinderGeometry(0.4, 0.4, 0.3, 32);
