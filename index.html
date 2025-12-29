@@ -30,6 +30,29 @@ alert("GAME JS CARREGOU");
     Carregando jogo...
   </div>
 
-  <script src="js/game.js"></script>
+  <script document.getElementById("loading").style.display = "none";
+
+document.body.innerHTML += `
+  <div style="
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    background:black;
+    color:white;
+    font-size:22px;
+    flex-direction:column;
+  ">
+    <p>🏍️ Grau 3D rodando no celular!</p>
+
+    <button onclick="alert('Acelerando 🚀')" style="padding:12px;font-size:18px;margin:10px;">
+      Acelerar
+    </button>
+
+    <button onclick="alert('Empinou 😎')" style="padding:12px;font-size:18px;">
+      Dar Grau
+    </button>
+  </div>
+`;
   </body>
 </htmlm
